@@ -14,8 +14,8 @@ const initCartState: CartStateType = { cart: [] }
 const REDUCER_ACTION_TYPE = {
     ADD: "ADD",
     REMOVE: "REMOVE",
-    QUANITITY: "QUANTITY",
-    SUMBIT: "SUBMIT",
+    QUANTITY: "QUANTITY",
+    SUBMIT: "SUBMIT",
 }
 
 export type ReducerActionType = typeof REDUCER_ACTION_TYPE
@@ -52,9 +52,9 @@ const reducer = (state: CartStateType, action: ReducerAction): CartStateType => 
 
             return {...state, cart: [...filteredCart]}
         }
-        case REDUCER_ACTION_TYPE.QUANITITY: {
+        case REDUCER_ACTION_TYPE.QUANTITY: {
             if(!action.payload){
-                throw new Error('action.payload missing in QUANITITY action')
+                throw new Error('action.payload missing in QUANTITY action')
             }
 
             const { sku, qty } = action.payload
@@ -68,7 +68,7 @@ const reducer = (state: CartStateType, action: ReducerAction): CartStateType => 
 
             return { ...state, cart: [ ...filteredCart, updatedItem]}
         }
-        case REDUCER_ACTION_TYPE.SUMBIT: {
+        case REDUCER_ACTION_TYPE.SUBMIT: {
             return { ...state, cart: [] }
         }
         default: 
